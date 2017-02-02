@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.miramicodigo.toddler.ui.MenuActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Preguntas"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:textSize="30sp"/>
+
+    <Button
+        android:id="@+id/btn.menu.motorgrueso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Motor grueso"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/btn.menu.motorfino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Motor fino"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/btn.menu.lenguaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lenguaje"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/btn.menu.evaluaciongeneral"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Evaluacion General"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"/>
+
+
+    <FrameLayout
+        android:id="@+id/vLoading"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#88000000"
+        android:visibility="gone">
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </FrameLayout>
+</LinearLayout>
