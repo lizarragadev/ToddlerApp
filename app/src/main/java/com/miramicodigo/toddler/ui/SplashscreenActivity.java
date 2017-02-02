@@ -12,10 +12,9 @@ import butterknife.BindView;
 
 public class SplashscreenActivity extends BaseActivity {
 
-    @BindView(R.id.ivLogo)
-    private ImageView ivLogo;
-
     private Animation animation;
+
+    @BindView(R.id.ivLogo) ImageView ivLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +22,8 @@ public class SplashscreenActivity extends BaseActivity {
         setContentView(R.layout.activity_splashscreen);
 
         injectViews();
+        ui();
 
-        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation);
         ivLogo.startAnimation(animation);
 
         animation.setAnimationListener(new Animation.AnimationListener() {
@@ -44,6 +43,10 @@ public class SplashscreenActivity extends BaseActivity {
 
             }
         });
+    }
+
+    public void ui() {
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation);
     }
 
 }

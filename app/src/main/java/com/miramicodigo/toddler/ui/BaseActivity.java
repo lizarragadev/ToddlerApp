@@ -22,7 +22,7 @@ public class BaseActivity extends AppCompatActivity {
 
     protected void showMessage(View container, String message, int type) {
         Snackbar snackbar = Snackbar.make(container,message, Snackbar.LENGTH_LONG);
-        if (type == 1) {
+        if (type == ERROR) {
             snackbar.setActionTextColor(Color.RED);
         } else {
             if(type == 2) {

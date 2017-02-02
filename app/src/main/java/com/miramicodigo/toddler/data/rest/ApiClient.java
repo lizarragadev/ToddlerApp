@@ -1,6 +1,7 @@
 package com.miramicodigo.toddler.data.rest;
 
-import com.miramicodigo.toddler.data.Config;
+import com.miramicodigo.toddler.data.entity.response.PreguntasResponse;
+import com.miramicodigo.toddler.view.Config;
 import com.miramicodigo.toddler.data.entity.request.EvaluarRequest;
 import com.miramicodigo.toddler.data.entity.response.EvaluarResponse;
 import com.squareup.okhttp.OkHttpClient;
@@ -11,6 +12,7 @@ import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
 import retrofit.http.Body;
+import retrofit.http.GET;
 import retrofit.http.Headers;
 import retrofit.http.POST;
 
@@ -29,14 +31,18 @@ public class ApiClient {
                     .setClient(new OkClient(getClient()))
                     .setLogLevel(RestAdapter.LogLevel.FULL)
                     .build();
+            servicesApiInterface = restAdapter.create(ServicesApiInterface.class);
         }
         return servicesApiInterface;
     }
 
     public interface ServicesApiInterface {
         @Headers("Content-Type: application/json")
-        @POST("/api/login")
+        @POST("/evaluar.php")
         void validar(@Body EvaluarRequest evaluarRequest, Callback<EvaluarResponse> callback);
+
+        @GET("/listaPreguntas.php")
+        void obtienePreguntas(Callback<PreguntasResponse> callback);
     }
 
     private static OkHttpClient getClient() {
