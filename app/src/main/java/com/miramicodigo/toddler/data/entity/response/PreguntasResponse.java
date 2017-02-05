@@ -7,7 +7,6 @@ import com.miramicodigo.toddler.data.entity.PreguntaEntity;
  */
 
 public class PreguntasResponse extends BaseResponse {
-
     private PreguntaEntity data;
 
     public PreguntaEntity getData() {
@@ -17,4 +16,5 @@ public class PreguntasResponse extends BaseResponse {
     public void setData(PreguntaEntity data) {
         this.data = data;
     }
+
 }
