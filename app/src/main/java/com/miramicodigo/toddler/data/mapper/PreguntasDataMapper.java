@@ -7,6 +7,8 @@ import com.miramicodigo.toddler.data.entity.response.PreguntasResponse;
 import com.miramicodigo.toddler.model.entity.Evaluacion;
 import com.miramicodigo.toddler.model.entity.Preguntas;
 
+import java.util.List;
+
 /**
  * Created by gusn8 on 31-01-17.
  */
@@ -19,18 +21,21 @@ public class PreguntasDataMapper {
             return preguntas;
         preguntas.setId(preguntaEntity.getId());
         preguntas.setPregunta(preguntaEntity.getPregunta());
-        preguntas.setDescripcion(preguntaEntity.getDescripcion());
         preguntas.setTipo(preguntaEntity.getTipo());
 
         return preguntas;
     }
 
-    public Preguntas transformResponse(PreguntasResponse preguntasResponse) {
+    public Preguntas transformResponse(List<Preguntas> preguntasResponse) {
         Preguntas preguntas = new Preguntas();
-        if (preguntasResponse == null)
-            return preguntas;
+        for (Preguntas pregunta: preguntasResponse) {
+        //    Preguntas preguntas = new Preguntas();
+        }
 
-        preguntas = transform(preguntasResponse.getData());
+        if (preguntasResponse == null) {}
+
+
+        //preguntas = transform(preguntasResponse.getData());
         return preguntas;
     }
 }
