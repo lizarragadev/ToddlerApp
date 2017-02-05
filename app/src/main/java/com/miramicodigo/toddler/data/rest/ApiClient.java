@@ -1,11 +1,14 @@
 package com.miramicodigo.toddler.data.rest;
 
+import com.miramicodigo.toddler.data.entity.PreguntaEntity;
 import com.miramicodigo.toddler.data.entity.response.PreguntasResponse;
+import com.miramicodigo.toddler.model.entity.Preguntas;
 import com.miramicodigo.toddler.view.Config;
 import com.miramicodigo.toddler.data.entity.request.EvaluarRequest;
 import com.miramicodigo.toddler.data.entity.response.EvaluarResponse;
 import com.squareup.okhttp.OkHttpClient;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import retrofit.Callback;
@@ -37,12 +40,13 @@ public class ApiClient {
     }
 
     public interface ServicesApiInterface {
-        @Headers("Content-Type: application/json")
+        @Headers("Content-Type: application/json; charset=UTF-8")
         @POST("/evaluar.php")
         void validar(@Body EvaluarRequest evaluarRequest, Callback<EvaluarResponse> callback);
 
+        @Headers("Content-Type: application/json; charset=UTF-8")
         @GET("/listaPreguntas.php")
-        void obtienePreguntas(Callback<PreguntasResponse> callback);
+        void obtienePreguntas(Callback<List<Preguntas>> callback);
     }
 
     private static OkHttpClient getClient() {
