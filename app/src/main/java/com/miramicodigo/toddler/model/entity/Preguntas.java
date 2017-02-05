@@ -3,15 +3,18 @@ package com.miramicodigo.toddler.model.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Created by gusn8 on 02-02-17.
  */
 
-public class Preguntas implements Parcelable {
+public class Preguntas implements Parcelable, Serializable {
     private int id;
     private String pregunta;
     private String descripcion;
     private int tipo;
+    private int puntaje = 1;
 
     public Preguntas() {
 
@@ -79,5 +82,13 @@ public class Preguntas implements Parcelable {
 
     public void setTipo(int tipo) {
         this.tipo = tipo;
+    }
+
+    public int getPuntaje() {
+        return puntaje;
+    }
+
+    public void setPuntaje(int puntaje) {
+        this.puntaje = puntaje;
     }
 }
