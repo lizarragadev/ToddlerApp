@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#eaeaea"
     tools:context="com.miramicodigo.toddler.ui.PreguntasActivity">
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv.preguntas.recyclerview"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
+        android:layout_above="@+id/btn.preguntas.evaluar"/>
 
-
+    <Button
+        android:id="@+id/btn.preguntas.evaluar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent"
+        android:padding="20dp"
+        android:text="Evaluar"/>
 </RelativeLayout>

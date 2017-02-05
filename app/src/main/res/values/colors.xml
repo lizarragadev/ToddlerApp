@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="color.desarrollado">#4B9609</color>
+    <color name="color.enprogreso">#F2930C</color>
+    <color name="color.preocupante">#CC060C</color>
 </resources>
