@@ -7,6 +7,8 @@ import com.miramicodigo.toddler.model.interactor.ToddlerCallback;
 import com.miramicodigo.toddler.model.interactor.ToddlerInteractor;
 import com.miramicodigo.toddler.view.ToddlerView;
 
+import java.util.List;
+
 /**
  * Created by gusn8 on 30-01-17.
  */
@@ -39,7 +41,7 @@ public class ToddlerPresenter implements Presenter<ToddlerView>, ToddlerCallback
     @Override
     public void onObtienePreguntasSuccess(Object object) {
         toddlerView.hideLoading();
-        Preguntas preguntas= (Preguntas) (object);
+        List<Preguntas> preguntas= (List<Preguntas>) (object);
         toddlerView.gotoMain(preguntas);
     }
 
