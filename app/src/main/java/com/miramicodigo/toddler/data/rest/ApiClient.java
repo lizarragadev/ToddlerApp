@@ -1,5 +1,6 @@
 package com.miramicodigo.toddler.data.rest;
 
+import com.miramicodigo.toddler.data.entity.EvaluarEntity;
 import com.miramicodigo.toddler.data.entity.PreguntaEntity;
 import com.miramicodigo.toddler.data.entity.response.PreguntasResponse;
 import com.miramicodigo.toddler.model.entity.Preguntas;
@@ -42,7 +43,7 @@ public class ApiClient {
     public interface ServicesApiInterface {
         @Headers("Content-Type: application/json; charset=UTF-8")
         @POST("/evaluar.php")
-        void validar(@Body EvaluarRequest evaluarRequest, Callback<EvaluarResponse> callback);
+        void obtieneEvaluacion(@Body EvaluarRequest evaluarRequest, Callback<EvaluarEntity> callback);
 
         @Headers("Content-Type: application/json; charset=UTF-8")
         @GET("/listaPreguntas.php")
