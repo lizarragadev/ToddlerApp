@@ -5,8 +5,8 @@ package com.miramicodigo.toddler.model.interactor;
  */
 
 public interface ToddlerCallback {
-    void onEvaluarSuccess(Object object);
-    void onEvaluarError(Object object);
+    void onObtieneEvaluacionSuccess(Object object);
+    void onObtieneEvaluacionError(Object object);
 
     void onObtienePreguntasSuccess(Object object);
     void onObtienePreguntasError(Object object);
