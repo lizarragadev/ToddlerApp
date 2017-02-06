@@ -14,10 +14,8 @@ public class EvaluarDataMapper {
         Evaluacion evaluacion = new Evaluacion();
         if (evaluarEntity == null)
             return evaluacion;
-        evaluacion.setId(evaluarEntity.getId());
         evaluacion.setCi(evaluarEntity.getCi());
         evaluacion.setNombre(evaluarEntity.getNombre());
-        evaluacion.setApellido(evaluarEntity.getApellido());
         evaluacion.setEdad(evaluarEntity.getEdad());
         evaluacion.setNombreTutor(evaluarEntity.getNombreTutor());
 
