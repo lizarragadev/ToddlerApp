@@ -52,6 +52,7 @@ public class PreguntasActivity extends BaseActivity implements RecyclerItemClick
 
     @Override
     public void onItemClickListener(int position) {
+        System.out.println("CLICK EN LA POSICION: "+position);
     }
 
     @OnClick(R.id.btn_preguntas_evaluar)
