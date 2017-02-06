@@ -15,11 +15,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.miramicodigo.toddler.R;
+import com.miramicodigo.toddler.data.entity.EvaluarEntity;
 import com.miramicodigo.toddler.model.entity.Preguntas;
 import com.miramicodigo.toddler.presenter.ToddlerPresenter;
 import com.miramicodigo.toddler.view.ToddlerView;
 
 import java.io.Serializable;
+import java.nio.channels.Pipe;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +33,15 @@ public class MenuActivity extends BaseActivity implements ToddlerView {
     private static final String TAG = "MenuActivity";
     private ToddlerPresenter toddlerPresenter;
     private List<Preguntas> listaPreguntas;
+    private EvaluarEntity evaluarEntityRespuesta;
+    private int resMG = 0;
+    private int resMF = 0;
+    private int resLeng = 0;
+
+    private String nombre;
+    private int ci;
+    private int edad;
+    private String tutor;
 
     @BindView(R.id.pbCarga)
     ProgressBar progressBar;
@@ -41,10 +52,6 @@ public class MenuActivity extends BaseActivity implements ToddlerView {
     @BindView(R.id.ll_base)
     LinearLayout linearLayoutBase;
 
-    @BindView(R.id.tv_menu_mg_titulo)
-    TextView tvMGTitulo;
-    @BindView(R.id.tv_menu_mg_descripcion)
-    TextView tvMGDescripcion;
     @BindView(R.id.tv_menu_mg_preguntas)
     TextView tvMGPreguntas;
     @BindView(R.id.tv_menu_mg_resultado)
@@ -52,10 +59,6 @@ public class MenuActivity extends BaseActivity implements ToddlerView {
     @BindView(R.id.rb_menu_mg_rating)
     RatingBar rbMGRating;
 
-    @BindView(R.id.tv_menu_mf_titulo)
-    TextView tvMFTitulo;
-    @BindView(R.id.tv_menu_mf_descripcion)
-    TextView tvMFDescripcion;
     @BindView(R.id.tv_menu_mf_preguntas)
     TextView tvMFPreguntas;
     @BindView(R.id.tv_menu_mf_resultado)
@@ -63,10 +66,6 @@ public class MenuActivity extends BaseActivity implements ToddlerView {
     @BindView(R.id.rb_menu_mf_rating)
     RatingBar rbMFRating;
 
-    @BindView(R.id.tv_menu_leng_titulo)
-    TextView tvLengTitulo;
-    @BindView(R.id.tv_menu_leng_descripcion)
-    TextView tvLengDescripcion;
     @BindView(R.id.tv_menu_leng_preguntas)
     TextView tvLengPreguntas;
     @BindView(R.id.tv_menu_leng_resultado)
@@ -81,6 +80,16 @@ public class MenuActivity extends BaseActivity implements ToddlerView {
         setContentView(R.layout.activity_menu);
 
         injectViews();
+
+        Bundle bundle = getIntent().getExtras();
+
+        nombre = bundle.getString("nombre", "").toString();
+        ci = Integer.parseInt(bundle.getString("ci"));
+        edad = Integer.parseInt(bundle.getString("edad"));
+        tutor = bundle.getString("tutor", "").toString();
+
+        System.out.println("****** "+nombre+" ****** "+ci+" ******* "+edad+" ****** "+tutor);
+
         linearLayoutBase.setVisibility(View.GONE);
         toddlerPresenter = new ToddlerPresenter();
         toddlerPresenter.addView(this);
@@ -117,6 +126,13 @@ public class MenuActivity extends BaseActivity implements ToddlerView {
     @Override
     public void gotoMain(List<Preguntas> preguntas) {
         listaPreguntas = preguntas;
+        setCantidadPreguntas();
+    }
+
+    @Override
+    public void gotoMainEvaluacion(EvaluarEntity evaluarEntity) {
+        evaluarEntityRespuesta = evaluarEntity;
+        System.out.println("DEVOLVER DEL SERVIDOR: "+evaluarEntityRespuesta.getResultado());
     }
 
     @Override
@@ -137,6 +153,26 @@ public class MenuActivity extends BaseActivity implements ToddlerView {
     @OnClick(R.id.card_view_leng)
     void goToLenguaje() {
         enviaPreguntas(LENGUAJE);
+    }
+
+    public void setCantidadPreguntas() {
+        int mg, mf, l;
+        mg = mf = l = 0;
+        List<Preguntas> aux = new ArrayList<Preguntas>();
+        for (Preguntas pre : listaPreguntas) {
+            if(pre.getTipo() == MOTOR_GRUESO) {
+                mg++;
+            } else {
+                if(pre.getTipo() == MOTOR_FINO) {
+                    mf++;
+                } else {
+                    l++;
+                }
+            }
+        }
+        tvMGPreguntas.setText(mg+" preguntas.");
+        tvMFPreguntas.setText(mf+" preguntas.");
+        tvLengPreguntas.setText(l+" preguntas.");
     }
 
     public void enviaPreguntas(int tipo) {
@@ -187,11 +223,16 @@ public class MenuActivity extends BaseActivity implements ToddlerView {
             }
             switch (tipo) {
                 case MOTOR_GRUESO:
+                    resMG = resultado;
                     actualizaMotorGrueso(resultado);
                     break;
                 case MOTOR_FINO:
+                    resMF = resultado;
+                    actualizaMotorFino(resultado);
                     break;
                 case LENGUAJE:
+                    resLeng = resultado;
+                    actualizaLenguaje(resultado);
                     break;
                 case 0:
                     break;
@@ -217,6 +258,52 @@ public class MenuActivity extends BaseActivity implements ToddlerView {
         tvMGResultado.setTextColor(color);
         tvMGResultado.setText(valor);
         rbMGRating.setRating(res);
+    }
+
+    public void actualizaMotorFino(int res) {
+        int color;
+        String valor = "";
+        if(res == RES_DESARROLLADO) {
+            valor = DESARROLLADO;
+            color = ContextCompat.getColor(getApplicationContext(), R.color.color_desarrollado);
+        } else {
+            if(res == RES_EN_PROGRESO) {
+                valor = EN_PROGRESO;
+                color = ContextCompat.getColor(getApplicationContext(), R.color.color_enprogreso);
+            } else {
+                valor = PREOCUPANTE;
+                color = ContextCompat.getColor(getApplicationContext(), R.color.color_preocupante);
+            }
+        }
+        tvMFResultado.setTextColor(color);
+        tvMFResultado.setText(valor);
+        rbMFRating.setRating(res);
+    }
+
+    public void actualizaLenguaje(int res) {
+        int color;
+        String valor = "";
+        if(res == RES_DESARROLLADO) {
+            valor = DESARROLLADO;
+            color = ContextCompat.getColor(getApplicationContext(), R.color.color_desarrollado);
+        } else {
+            if(res == RES_EN_PROGRESO) {
+                valor = EN_PROGRESO;
+                color = ContextCompat.getColor(getApplicationContext(), R.color.color_enprogreso);
+            } else {
+                valor = PREOCUPANTE;
+                color = ContextCompat.getColor(getApplicationContext(), R.color.color_preocupante);
+            }
+        }
+        tvLengResultado.setTextColor(color);
+        tvLengResultado.setText(valor);
+        rbLengRating.setRating(res);
+    }
+
+    @OnClick(R.id.btn_menu_evaluaciongeneral)
+    void evaluaionGeneral() {
+        System.out.println("Click en EVALUACION GENERAL");
+        toddlerPresenter.getEvaluacion(nombre, ci, edad, tutor, resMG, resMF, resLeng);
     }
 
 }
