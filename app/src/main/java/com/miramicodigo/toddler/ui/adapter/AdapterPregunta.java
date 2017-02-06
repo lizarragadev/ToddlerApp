@@ -62,29 +62,7 @@ public class AdapterPregunta extends RecyclerView.Adapter<AdapterPregunta.Pregun
     }
 
     public void cambiaValor(AdapterPregunta.PreguntaHolder holder) {
-        int valor = Integer.parseInt(holder.tvAdapterPuntaje.getText().toString());
-        String desc = "";
-        int color = 0;
-        if (valor == 1) {
-            valor = valor + 1;
-            desc = "En proceso";
-            color = Color.parseColor("#F2930C");
-        }else {
-            if(valor == 2) {
-                valor = valor + 1;
-                desc = "Desarrollado";
-                color = Color.parseColor("#4B9609");
-            } else {
-                valor = 1;
-                desc = "Preocupante";
-                color = Color.parseColor("#CC060C");
-            }
-        }
-        preguntasList.get(position).setPuntaje(valor);
-        holder.tvAdapterPuntaje.setText(valor+"");
-        holder.tvAdapterPuntajeTexto.setText(desc);
-        holder.tvAdapterPuntaje.setTextColor(color);
-        holder.tvAdapterPuntajeTexto.setTextColor(color);
+
     }
 
     @Override
@@ -113,8 +91,30 @@ public class AdapterPregunta extends RecyclerView.Adapter<AdapterPregunta.Pregun
         public void onClick(View v) {
             if (recyclerItemClickListener != null) {
                 recyclerItemClickListener.onItemClickListener(getAdapterPosition());
-                position = getAdapterPosition();
-                cambiaValor(this);
+                position = getLayoutPosition();
+                int valor = Integer.parseInt(tvAdapterPuntaje.getText().toString());
+                String desc = "";
+                int color = 0;
+                if (valor == 1) {
+                    valor = valor + 1;
+                    desc = "En proceso";
+                    color = Color.parseColor("#F2930C");
+                }else {
+                    if(valor == 2) {
+                        valor = valor + 1;
+                        desc = "Desarrollado";
+                        color = Color.parseColor("#4B9609");
+                    } else {
+                        valor = 1;
+                        desc = "Preocupante";
+                        color = Color.parseColor("#CC060C");
+                    }
+                }
+                preguntasList.get(position).setPuntaje(valor);
+                tvAdapterPuntaje.setText(valor+"");
+                tvAdapterPuntajeTexto.setText(desc);
+                tvAdapterPuntaje.setTextColor(color);
+                tvAdapterPuntajeTexto.setTextColor(color);
             }
 
         }
