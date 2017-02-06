@@ -1,5 +1,6 @@
 package com.miramicodigo.toddler.presenter;
 
+import com.miramicodigo.toddler.data.entity.EvaluarEntity;
 import com.miramicodigo.toddler.data.mapper.EvaluarDataMapper;
 import com.miramicodigo.toddler.data.mapper.PreguntasDataMapper;
 import com.miramicodigo.toddler.model.entity.Preguntas;
@@ -25,17 +26,26 @@ public class ToddlerPresenter implements Presenter<ToddlerView>, ToddlerCallback
 
     public void obtienePreguntas() {
         toddlerView.showLoading();
-        toddlerInteractor.obtienePreguntas(this);
+        toddlerInteractor.getPreguntas(this);
+    }
+
+    public void getEvaluacion(String nombre, int ci, int edad, String tutor, int resGrueso, int resFino, int resLeng) {
+        toddlerView.showLoading();
+        toddlerInteractor.getEvaluacion(nombre, ci, edad, tutor, resGrueso, resFino, resLeng, this);
     }
 
     @Override
-    public void onEvaluarSuccess(Object object) {
-
+    public void onObtieneEvaluacionSuccess(Object object) {
+        toddlerView.hideLoading();
+        EvaluarEntity evaluarEntity = (EvaluarEntity) (object);
+        toddlerView.gotoMainEvaluacion(evaluarEntity);
     }
 
     @Override
-    public void onEvaluarError(Object object) {
-
+    public void onObtieneEvaluacionError(Object object) {
+        String message= object.toString();
+        toddlerView.hideLoading();
+        toddlerView.showMessageError(message);
     }
 
     @Override
