@@ -6,20 +6,14 @@ package com.miramicodigo.toddler.data.entity.request;
 
 public class EvaluarRequest {
 
-    private int id;
-    private int ci;
     private String nombre;
-    private String apellido;
+    private int ci;
     private int edad;
     private String nombreTutor;
+    private int resGrueso;
+    private int resFino;
+    private int resLeng;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getCi() {
         return ci;
@@ -37,14 +31,6 @@ public class EvaluarRequest {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
     public int getEdad() {
         return edad;
     }
@@ -59,5 +45,29 @@ public class EvaluarRequest {
 
     public void setNombreTutor(String nombreTutor) {
         this.nombreTutor = nombreTutor;
+    }
+
+    public int getResGrueso() {
+        return resGrueso;
+    }
+
+    public void setResGrueso(int resGrueso) {
+        this.resGrueso = resGrueso;
+    }
+
+    public int getResFino() {
+        return resFino;
+    }
+
+    public void setResFino(int resFino) {
+        this.resFino = resFino;
+    }
+
+    public int getResLeng() {
+        return resLeng;
+    }
+
+    public void setResLeng(int resLeng) {
+        this.resLeng = resLeng;
     }
 }
