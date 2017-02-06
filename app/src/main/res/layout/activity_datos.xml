@@ -27,18 +27,6 @@
             android:hint="@string/datos.tv.nombre"/>
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/tiet.datos.apellido"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textCapWords"
-            android:hint="@string/datos.tv.apellido"/>
-    </android.support.design.widget.TextInputLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
