@@ -2,8 +2,7 @@
     <string name="app_name">Toddler</string>
 
     <string name="datos.tv.titulo">Datos niño</string>
-    <string name="datos.tv.nombre">Nombre</string>
-    <string name="datos.tv.apellido">Apellido</string>
+    <string name="datos.tv.nombre">Nombre completo</string>
     <string name="datos.tv.ci">Carnet de identidad</string>
     <string name="datos.tv.edad">Edad</string>
     <string name="datos.tv.nombretutor">Nombre tutor</string>
