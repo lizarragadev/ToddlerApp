@@ -54,27 +54,15 @@ public class ToddlerInteractor {
     }
 
     public void getEvaluacion(String nombre, int ci, int edad, String nombreTutor, int resMG, int resMF, int resLeng, final ToddlerCallback toddlerCallback) {
-        EvaluarRequest evaluarRequest = new EvaluarRequest();
-        evaluarRequest.setNombre(nombre);
-        evaluarRequest.setCi(ci);
-        evaluarRequest.setEdad(edad);
-        evaluarRequest.setNombreTutor(nombreTutor);
-        evaluarRequest.setResGrueso(resMG);
-        evaluarRequest.setResFino(resMF);
-        evaluarRequest.setResLeng(resLeng);
-
-        ApiClient.getMyApiClient().obtieneEvaluacion(evaluarRequest, new Callback<EvaluarEntity>() {
+        ApiClient.getMyApiClient().obtieneEvaluacion(nombre, ci, edad, nombreTutor, resMG, resMF, resLeng , new Callback<EvaluarEntity>() {
             @Override
             public void success(EvaluarEntity evaluarEntity, Response response) {
-                System.out.println("###################################### "+evaluarEntity);
                 if(response.getStatus() == SUCCESS) {
-                    System.out.println("LLEGA GGGGGGGGGGGGG: "+evaluarEntity);
-                    System.out.println("RESPUESTA:::: "+response);
-                    /*if(evaluarEntity != null) {
+                    if(evaluarEntity != null) {
                         toddlerCallback.onObtieneEvaluacionSuccess(evaluarEntity);
                     } else {
                         toddlerCallback.onObtieneEvaluacionError("Ocurrio un error al obtener los datos.");
-                    }*/
+                    }
                 } else {
                     System.out.println("OCURRIO UN PROBLEMIRIJILLA");
                 }
@@ -82,7 +70,6 @@ public class ToddlerInteractor {
 
             @Override
             public void failure(RetrofitError error) {
-                System.out.println("KKKKKKKKKKKKKKKKKKK: "+error.getMessage());
                 String msg = "";
                 if(error != null) {
                     msg = error.getMessage();
