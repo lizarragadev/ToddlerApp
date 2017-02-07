@@ -36,7 +36,6 @@ public class DialogoDetalle extends DialogFragment {
         tvTitulo = (TextView) view.findViewById(R.id.tv_dialog_titulo);
         String title = getArguments().getString("title", "Enter Name");
         getDialog().setTitle(title);
-        tvTitulo.setText("ACA MANDAMOS");
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
