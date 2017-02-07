@@ -58,7 +58,6 @@ public class AdapterPregunta extends RecyclerView.Adapter<AdapterPregunta.Pregun
         final Preguntas pregunta = preguntasList.get(position);
         holder.tvPregunta.setText(pregunta.getPregunta());
         holder.tvDescripcion.setText(pregunta.getDescripcion());
-        //cambiaValor(holder);
     }
 
     public void cambiaValor(AdapterPregunta.PreguntaHolder holder) {
@@ -97,7 +96,7 @@ public class AdapterPregunta extends RecyclerView.Adapter<AdapterPregunta.Pregun
                 int color = 0;
                 if (valor == 1) {
                     valor = valor + 1;
-                    desc = "En proceso";
+                    desc = "En progreso";
                     color = Color.parseColor("#F2930C");
                 }else {
                     if(valor == 2) {
