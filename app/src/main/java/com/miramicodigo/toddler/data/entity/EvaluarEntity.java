@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Created by gusn8 on 30-01-17.
  */
 
-public class EvaluarEntity implements Parcelable, Serializable{
+public class EvaluarEntity implements Parcelable, Serializable {
     private String nombre;
     private int ci;
     private int edad;
