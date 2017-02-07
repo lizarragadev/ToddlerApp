@@ -1,79 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    android:id="@+id/coordinator_layout"
     tools:context="com.miramicodigo.toddler.ui.DatosActivity">
-
-    <TextView
-        android:id="@+id/tv.datos.Titulo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/datos.tv.titulo"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:textSize="@dimen/activity.titulo"/>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/tiet.datos.nombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textCapWords"
-            android:hint="@string/datos.tv.nombre"/>
-    </android.support.design.widget.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/tiet.datos.ci"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/datos.tv.ci"
-                android:inputType="number"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/tiet.datos.edad"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/datos.tv.edad"
-                android:inputType="number"/>
-        </android.support.design.widget.TextInputLayout>
-    </LinearLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/tiet.datos.nombretutor"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textCapWords"
-            android:hint="@string/datos.tv.nombretutor"/>
-    </android.support.design.widget.TextInputLayout>
+            android:layout_height="0dp"
+            android:layout_weight="6">
 
-    <Button
-        android:id="@+id/btn.datos.siguiente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/datos.btn.siguiente"
-        android:layout_gravity="right"/>
-</LinearLayout>
+            <android.support.v7.widget.CardView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view_mg"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                card_view:cardCornerRadius="4dp"
+                card_view:cardElevation="4dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/tv.datos.Titulo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/datos.tv.titulo"
+                                android:gravity="center"
+                                android:layout_margin="15dp"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/activity.titulo"/>
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp">
+
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/tiet.datos.nombre"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="50"
+                                    android:drawableRight="@drawable/ic_child_care_black_24dp"
+                                    android:hint="@string/datos.tv.nombre"/>
+                            </android.support.design.widget.TextInputLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="10dp">
+                                <android.support.design.widget.TextInputLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2">
+
+                                    <android.support.design.widget.TextInputEditText
+                                        android:id="@+id/tiet.datos.ci"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:hint="@string/datos.tv.ci"
+                                        android:inputType="number"
+                                        android:maxLength="9"
+                                        android:drawableRight="@drawable/ic_credit_card_black_24dp"/>
+                                </android.support.design.widget.TextInputLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+                                    <android.support.design.widget.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1">
+
+                                        <android.support.design.widget.TextInputEditText
+                                            android:id="@+id/tiet.datos.edad"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:hint="@string/datos.tv.edad"
+                                            android:inputType="number"
+                                            android:maxLength="1"
+                                            android:digits="3,4"
+                                            android:drawableRight="@drawable/ic_cake_black_24dp"/>
+                                    </android.support.design.widget.TextInputLayout>
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/datos.tv.edad.comment"
+                                        android:textSize="10sp"
+                                        android:gravity="right"
+                                        android:layout_marginRight="5dp"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/color.fondo"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginBottom="5dp"/>
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp">
+
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/tiet.datos.nombretutor"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="50"
+                                    android:hint="@string/datos.tv.nombretutor"
+                                    android:drawableRight="@drawable/ic_person_black_24dp"/>
+                            </android.support.design.widget.TextInputLayout>
+                        </LinearLayout>
+                    </ScrollView>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:gravity="center_vertical">
+            <Button
+                android:id="@+id/btn.datos.siguiente"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/datos.btn.siguiente"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:layout_margin="20dp"
+                android:paddingRight="10dp"
+                android:textColor="@drawable/texto_boton"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/boton"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

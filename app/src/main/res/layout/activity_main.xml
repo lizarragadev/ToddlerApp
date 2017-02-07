@@ -1,22 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
     tools:context="com.miramicodigo.toddler.ui.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Evaluador de ninios"
-        android:layout_centerInParent="true"/>
-
-    <Button
-        android:id="@+id/btnEmpezar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Empezar"
-        android:layout_alignParentBottom="true"/>
+        android:layout_height="0dp"
+        android:layout_weight="6">
 
-</RelativeLayout>
+        <android.support.v7.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view_mg"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            card_view:cardCornerRadius="4dp"
+            card_view:cardElevation="4dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/iv.main.logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:src="@drawable/logo_toddler"
+                    android:layout_centerInParent="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main.tv.bienvenidos"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="20dp"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_above="@id/iv.main.logo"/>
+                <TextView
+                    android:id="@+id/tv.main.titulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main.tv.toddler"
+                    android:textSize="40dp"
+                    android:textStyle="bold"
+                    android:layout_centerInParent="true"
+                    android:layout_below="@id/iv.main.logo"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main.tv.elevaluador"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/tv.main.titulo"/>
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:gravity="center_vertical">
+        <Button
+            android:id="@+id/btnEmpezar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/main.btn.empezar"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_margin="20dp"
+            android:textColor="@drawable/texto_boton"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/boton"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+</LinearLayout>

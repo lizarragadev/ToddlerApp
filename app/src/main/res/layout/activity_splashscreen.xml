@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context="com.miramicodigo.toddler.ui.SplashscreenActivity">
 
     <ImageView
         android:id="@+id/ivLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerInside"
         android:src="@drawable/logo_toddler"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/tv.splash.titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/main.tv.toddler"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/ivLogo"
+        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>
