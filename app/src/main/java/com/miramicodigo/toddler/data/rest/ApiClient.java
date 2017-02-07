@@ -16,9 +16,12 @@ import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
 import retrofit.http.Body;
+import retrofit.http.Field;
+import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.Headers;
 import retrofit.http.POST;
+import retrofit.http.PUT;
 
 /**
  * Created by gusn8 on 31-01-17.
@@ -41,13 +44,23 @@ public class ApiClient {
     }
 
     public interface ServicesApiInterface {
-        @Headers("Content-Type: application/json; charset=UTF-8")
+        @FormUrlEncoded
         @POST("/evaluar.php")
-        void obtieneEvaluacion(@Body EvaluarRequest evaluarRequest, Callback<EvaluarEntity> callback);
+        void obtieneEvaluacion(
+                @Field("nombre") String nombre,
+                @Field("ci") int ci,
+                @Field("edad") int edad,
+                @Field("nombreTutor") String nombreTutor,
+                @Field("resGrueso") int resGrueso,
+                @Field("resFino") int resFino,
+                @Field("resLeng") int resLeng,
+                Callback<EvaluarEntity> callback
+        );
 
         @Headers("Content-Type: application/json; charset=UTF-8")
         @GET("/listaPreguntas.php")
         void obtienePreguntas(Callback<List<Preguntas>> callback);
+
     }
 
     private static OkHttpClient getClient() {
