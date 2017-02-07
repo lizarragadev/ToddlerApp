@@ -3,6 +3,7 @@
     package="com.miramicodigo.toddler">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,19 +12,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.SplashscreenActivity">
+        <activity
+            android:name=".ui.SplashscreenActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.DatosActivity" />
-        <activity android:name=".ui.BaseActivity" />
-        <activity android:name=".ui.components.DialogoDetalle" />
-        <activity android:name=".ui.MenuActivity" />
-        <activity android:name=".ui.PreguntasActivity"></activity>
+        <activity
+            android:name=".ui.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.DatosActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.BaseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.MenuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.PreguntasActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.ResultadoActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
