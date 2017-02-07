@@ -1,11 +1,52 @@
 <resources>
     <string name="app_name">Toddler</string>
 
-    <string name="datos.tv.titulo">Datos niño</string>
+    <string name="datos.tv.titulo">Ingrese datos de niño(a)</string>
     <string name="datos.tv.nombre">Nombre completo</string>
     <string name="datos.tv.ci">Carnet de identidad</string>
     <string name="datos.tv.edad">Edad</string>
+    <string name="datos.tv.edad.comment">3 a 4 años</string>
     <string name="datos.tv.nombretutor">Nombre tutor</string>
     <string name="datos.btn.siguiente">Siguiente</string>
+
+    <string name="main.tv.bienvenidos">Bienvenid@s a...</string>
+    <string name="main.tv.toddler">TODDLER</string>
+    <string name="main.tv.elevaluador">El evaluador de niños</string>
+    <string name="main.btn.empezar">Empezar</string>
+
+    <string name="menu.tv.mg">Motor Grueso</string>
+    <string name="menu.tv.mf">Motor Fino</string>
+    <string name="menu.tv.leng">Lenguaje</string>
+    <string name="menu.tv.des.mg">Se refiere a la capacidad de movimiento básico del cuerpo como ser: movimiento de extremidades y equilibrio.</string>
+    <string name="menu.tv.des.mf">Se relaciona con los movimientos de las partes individuales, como ser: las manos, los dedos y los pequeños músculos en general.</string>
+    <string name="menu.tv.des.leng">Son las habilidades lingüisticas que adquiere el niño, desde su primera palabra, hasta los mivimientos labiales, como la creación de burbújas.</string>
+    <string name="menu.tv.preguntas">N preguntas</string>
+    <string name="menu.tv.sinevaluar">Sin evaluar</string>
+    <string name="menu.btn.evgeneral">Evaluación General</string>
+
+    <string name="preguntas.btn.evaluar">Evaluar</string>
+
+    <string name="resultado.tv.titulo">RESUMEN</string>
+    <string name="resultado.tv.reseval">Resultados evaluación</string>
+    <string name="resultado.tv.resglob">Resultado final</string>
+    <string name="resultado.msg.preocupante">Se recomienda trabajar de forma regular con el niño para nivelar sus habilidades motrices y lingüisticas.</string>
+    <string name="resultado.msg.enprogreso">Con un apoyo  adecuado en las actividades, puede fortalecer el desarrollo en el que se encuentra el niño.</string>
+    <string name="resultado.msg.desarrollado">El niño se encuentra en un excelente nivel.</string>
+    <string name="resultado.btn.salir">Salir</string>
+    <string name="resultado.btn.nuevo">Nuevo</string>
+    <string name="resultado.dialog.cerrar">Cerrar Toodler App</string>
+    <string name="resultado.dialog.cerrar2">¿Esta seguro que quiere cerrar la aplicación?</string>'
+    <string name="resultado.dialog.cerrar.app1">Al presionar SI perderas los datos que ingresaste, ¿estas seguro?</string>
+    <string name="resultado.dialog.cerrar.app2">Cerrar activity</string>
+
+    <string name="indicaciones.tv.titulo">Indicaciones</string>
+    <string name="indicaciones.tv.desc1">La edad adecuada para realizar esta prueba es de 3 a 4 años de edad.</string>
+    <string name="indicaciones.tv.desc2">Los parámetros utilizados para la evaluación son:</string>
+    <string name="indicaciones.tv.desarrollado">Desarrollado</string>
+    <string name="indicaciones.tv.enprogreso">En Progreso</string>
+    <string name="indicaciones.tv.preocupante">Preocupante</string>
+    <string name="indicaciones.tv.ayuda">Toque fuera del dialogo para salir</string>
+
+
 
 </resources>
