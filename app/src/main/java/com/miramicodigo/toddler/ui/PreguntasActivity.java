@@ -33,6 +33,7 @@ public class PreguntasActivity extends BaseActivity implements RecyclerItemClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_preguntas);
 
         injectViews();
@@ -52,7 +53,6 @@ public class PreguntasActivity extends BaseActivity implements RecyclerItemClick
 
     @Override
     public void onItemClickListener(int position) {
-        System.out.println("CLICK EN LA POSICION: "+position);
     }
 
     @OnClick(R.id.btn_preguntas_evaluar)
