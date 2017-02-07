@@ -1,11 +1,15 @@
 package com.miramicodigo.toddler.ui;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -80,20 +84,20 @@ public class MenuActivity extends BaseActivity implements ToddlerView {
         setContentView(R.layout.activity_menu);
 
         injectViews();
-
         Bundle bundle = getIntent().getExtras();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setTitle("Evaluacion");
 
         nombre = bundle.getString("nombre", "").toString();
         ci = Integer.parseInt(bundle.getString("ci"));
         edad = Integer.parseInt(bundle.getString("edad"));
         tutor = bundle.getString("tutor", "").toString();
 
-        System.out.println("****** "+nombre+" ****** "+ci+" ******* "+edad+" ****** "+tutor);
-
         linearLayoutBase.setVisibility(View.GONE);
         toddlerPresenter = new ToddlerPresenter();
         toddlerPresenter.addView(this);
-
         toddlerPresenter.obtienePreguntas();
     }
 
@@ -132,7 +136,13 @@ public class MenuActivity extends BaseActivity implements ToddlerView {
     @Override
     public void gotoMainEvaluacion(EvaluarEntity evaluarEntity) {
         evaluarEntityRespuesta = evaluarEntity;
-        System.out.println("DEVOLVER DEL SERVIDOR: "+evaluarEntityRespuesta.getResultado());
+        Intent intent = new Intent(getApplicationContext(), ResultadoActivity.class);
+        intent.putExtra("objeto", (Serializable) evaluarEntity);
+        intent.putExtra("resMG", resMG+"");
+        intent.putExtra("resMF", resMF+"");
+        intent.putExtra("resLeng", resLeng+"");
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -192,7 +202,7 @@ public class MenuActivity extends BaseActivity implements ToddlerView {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_CANCELED) {
-            showMessage(coordinatorLayout, "Se Cancelo", 2);
+            showMessage(coordinatorLayout, "Se Cancelo", 2, 1000);
         } else {
             int resultado = data.getExtras().getInt("resultado");
             int tipo = data.getIntExtra("tipoeval", 0);
@@ -212,13 +222,13 @@ public class MenuActivity extends BaseActivity implements ToddlerView {
             }
             switch (resultado) {
                 case 1:
-                    showMessage(coordinatorLayout, "El nivel de desarrollo "+msg+" es PREOCUPANTE.", 1);
+                    showMessage(coordinatorLayout, "El nivel de desarrollo "+msg+" es PREOCUPANTE.", 1, 4000);
                     break;
                 case 2:
-                    showMessage(coordinatorLayout, "El nivel de desarrollo "+msg+" es EN PROGRESO.", 2);
+                    showMessage(coordinatorLayout, "El nivel de desarrollo "+msg+" es EN PROGRESO.", 2, 4000);
                     break;
                 case 3:
-                    showMessage(coordinatorLayout, "El nivel de desarrollo "+msg+" es DESARROLLADO.", 3);
+                    showMessage(coordinatorLayout, "El nivel de desarrollo "+msg+" es DESARROLLADO.", 3, 4000);
                     break;
             }
             switch (tipo) {
@@ -302,8 +312,51 @@ public class MenuActivity extends BaseActivity implements ToddlerView {
 
     @OnClick(R.id.btn_menu_evaluaciongeneral)
     void evaluaionGeneral() {
-        System.out.println("Click en EVALUACION GENERAL");
-        toddlerPresenter.getEvaluacion(nombre, ci, edad, tutor, resMG, resMF, resLeng);
+        if(validaEvaluacion()) {
+            if(estaConectado(coordinatorLayout)){
+                toddlerPresenter.getEvaluacion(nombre, ci, edad, tutor, resMG, resMF, resLeng);
+            }
+        } else {
+            showMessage(coordinatorLayout, "Debe realizar las 3 evaluaciones", 2, 2000);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case android.R.id.home:
+                lanzaMensaje();
+                return true;
+        }
+        return (super.onOptionsItemSelected(menuItem));
+    }
+
+    public boolean validaEvaluacion() {
+        if(resMG == 0 || resMF == 0 || resLeng == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public void lanzaMensaje() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_menu_info_details)
+                .setTitle(getString(R.string.resultado_dialog_cerrar_app2))
+                .setMessage(getString(R.string.resultado_dialog_cerrar_app1))
+                .setPositiveButton("Si", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+    @Override
+    public void onBackPressed() {
+        lanzaMensaje();
     }
 
 }
