@@ -1,5 +1,9 @@
 package com.miramicodigo.toddler.data.entity.request;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
 /**
  * Created by gusn8 on 30-01-17.
  */
